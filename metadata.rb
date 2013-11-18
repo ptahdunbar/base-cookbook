@@ -9,6 +9,9 @@ version          '1.0.0'
 depends "git"
 depends "subversion"
 depends "postfix"
+depends 'ntp'
+depends 'timezone'
+depends 'ssh_known_hosts'
 
 supports "ubuntu"
 
