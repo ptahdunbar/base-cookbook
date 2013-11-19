@@ -1,5 +1,5 @@
-if node[:chef_environment] != nil
-	node.chef_environment = 'production'
+if node[:environment] != nil
+	node.environment = 'production'
 end
 
-Chef::Log.info "!!!!!!! Chef Environment: #{node.chef_environment}"
+Chef::Log.info "!!!!!!! Chef Environment: #{node.environment}"
