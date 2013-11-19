@@ -5,7 +5,7 @@ default[:base]['dependencies']			    = %w()
 default[:base]['users'] 				    = []
 
 default[:tz] 							    = 'America/New_York'
-default[:environment] 				        = 'production'
+default[:chef_environment] 				        = 'production'
 
 default[:base][:ssh_known_hosts] 		    = %w(github.com)
 default[:base][:authorized_keys] 		    = []
