@@ -1,5 +1,3 @@
-if node[:chef_environment] != nil
-	node.chef_environment = 'production'
-end
+node.set_unless['env'] = 'production'
 
-Chef::Log.info "!!!!!!! Chef Environment: #{node.chef_environment}"
+Chef::Log.info "[base] Environment: #{node.env}"

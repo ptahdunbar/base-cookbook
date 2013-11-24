@@ -1,12 +1,12 @@
-default[:base]['user']                      = 'vagrant'
-default[:base]['group']					    = 'vagrant'
+default[:base][:user]                      		= 'vagrant'
+default[:base][:group]					    	= 'vagrant'
+default[:base][:ssh_known_hosts]				= %w(github.com)
+default[:base][:latest_git_version]				= false
+default[:base][:vagrant_insecure_key]			= "https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub"
 
-default[:base]['dependencies']			    = %w()
-default[:base]['users'] 				    = []
-
-default[:tz] 							    = 'America/New_York'
-default[:chef_environment] 				        = 'production'
-
-default[:base][:ssh_known_hosts] 		    = %w(github.com)
-default[:base][:authorized_keys] 		    = []
-default[:base][:github_authorized_keys]	    = []
+node.set_unless[:base][:dependencies]			= %w(htop)
+node.set_unless[:base][:authorized_keys]		= []
+node.set_unless[:base][:github_authorized_keys]	= []
+node.set_unless[:tz]							= 'America/New_York'
+node.set_unless[:env] 				    		= 'production'
+node.set[:php][:environment] 					= node[:env]

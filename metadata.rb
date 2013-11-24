@@ -11,8 +11,9 @@ depends "git"
 depends "subversion"
 depends "postfix"
 depends 'ntp'
-depends 'timezone'
+depends 'timezone-ii'
 depends 'ssh_known_hosts'
+depends 'sudo'
 
 supports "ubuntu"
 

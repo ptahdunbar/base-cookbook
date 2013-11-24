@@ -1,7 +1,3 @@
 # base cookbook
 
-See varrgrant.
-
-TODO
-* api for managing ssh pub keys
-* add firewall (ufw)?
+See (Varrgrant)[https://github.com/ptahdunbar/varrgrant].
