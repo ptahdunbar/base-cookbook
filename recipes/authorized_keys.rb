@@ -1,12 +1,19 @@
 
 if node[:base][:authorized_keys]
 	node[:base][:authorized_keys].each do |group|
-		if group["keys"] and group["path"]
-			group["keys"].split(' ').each do |url|
+		next unless user_keys["keys"] and user_keys["user"]
+
+		if system("id #{user_keys["user"]} > /dev/null")
+			home = `echo ~#{user_keys["user"]}`.delete("\n")
+			next unless home
+
+			user_keys["keys"].each do |key|
+
+				Chef::Log.info "[base] authorized_keys for #{key} in #{home}"
+
 				execute "import_authorized_keys" do
 					user 'root'
-					command "curl #{url} >> #{group["path"]}/.ssh/authorized_keys"
-					command "chmod 400 #{group["path"]}/.ssh/authorized_keys"
+					command "curl key >> #{home}/.ssh/authorized_keys && chmod 400 #{home}/.ssh/authorized_keys"
 				end
 			end
 		end
@@ -14,13 +21,20 @@ if node[:base][:authorized_keys]
 end
 
 if node[:base][:github_authorized_keys]
-	node[:base][:github_authorized_keys].each do |group|
-		if group["usernames"] and group["home_path"]
-			group["usernames"].split(' ').each do |username|
+	node[:base][:github_authorized_keys].each do |user_keys|
+		next unless user_keys["keys"] and user_keys["user"]
+
+		if system("id #{user_keys["user"]} > /dev/null")
+			home = `echo ~#{user_keys["user"]}`.delete("\n")
+			next unless home
+
+			user_keys["keys"].each do |key|
+
+				Chef::Log.info "[base] github_authorized_keys for #{key} in #{home}"
+
 				execute "import_authorized_keys" do
 					user 'root'
-					command "curl https://github.com/#{username}.keys >> #{group["home_path"]}/.ssh/authorized_keys"
-					command "chmod 400 #{group["home_path"]}/.ssh/authorized_keys"
+					command "curl https://github.com/#{key}.keys >> #{home}/.ssh/authorized_keys && chmod 400 #{home}/.ssh/authorized_keys"
 				end
 			end
 		end
