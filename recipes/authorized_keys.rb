@@ -1,4 +1,3 @@
-
 if node[:base][:authorized_keys]
 	node[:base][:authorized_keys].each do |group|
 		next unless user_keys["keys"] and user_keys["user"]
@@ -8,10 +7,7 @@ if node[:base][:authorized_keys]
 			next unless home
 
 			user_keys["keys"].each do |key|
-
-				Chef::Log.info "[base] authorized_keys for #{key} in #{home}"
-
-				execute "import_authorized_keys" do
+				execute "authorized_keys for #{key} in #{home}" do
 					user 'root'
 					command "curl key >> #{home}/.ssh/authorized_keys && chmod 400 #{home}/.ssh/authorized_keys"
 				end
@@ -29,10 +25,7 @@ if node[:base][:github_authorized_keys]
 			next unless home
 
 			user_keys["keys"].each do |key|
-
-				Chef::Log.info "[base] github_authorized_keys for #{key} in #{home}"
-
-				execute "import_authorized_keys" do
+				execute "github_authorized_keys for #{key} in #{home}" do
 					user 'root'
 					command "curl https://github.com/#{key}.keys >> #{home}/.ssh/authorized_keys && chmod 400 #{home}/.ssh/authorized_keys"
 				end
