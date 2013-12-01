@@ -7,6 +7,8 @@
 # All rights reserved - Do Not Redistribute
 #
 
-node[:base]['dependencies'].each do |pkg|
-	package pkg
+if node[:base]['dependencies']
+	node[:base]['dependencies'].each do |pkg|
+		package pkg
+	end
 end
