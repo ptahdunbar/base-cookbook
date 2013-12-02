@@ -7,15 +7,14 @@ long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          '0.2.0'
 
 depends "apt"
-depends "ssh_known_hosts"
-depends "sudo"
 depends "timezone-ii"
 depends "vim"
 depends "git"
 depends "subversion"
 depends "postfix"
+depends "ssh_known_hosts"
+depends "sudo"
 depends "rsync"
-depends "tmux"
 depends "users"
 
 supports "ubuntu"
