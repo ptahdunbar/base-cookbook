@@ -19,6 +19,5 @@ include_recipe 'vim'
 include_recipe 'git'
 include_recipe 'subversion'
 include_recipe 'postfix'
-include_recipe 'yasm'
-#include_recipe 'ffmpeg'
+include_recipe 'ffmpeg'
 include_recipe 'sudo' if ! node['authorization']['sudo']['users'].empty?
