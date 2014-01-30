@@ -16,6 +16,7 @@ depends "ssh_known_hosts"
 depends "sudo"
 depends "rsync"
 depends "users"
+depends "yasm"
 depends "ffmpeg"
 
 supports "ubuntu"
