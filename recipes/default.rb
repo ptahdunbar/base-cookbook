@@ -12,7 +12,6 @@ include_recipe 'apt'
 include_recipe 'base::git_ppa' if node[:base][:latest_git_version]
 include_recipe 'base::ssh_known_hosts'
 include_recipe 'base::dependencies'
-#include_recipe 'base::gems'
 include_recipe 'base::ack'
 
 include_recipe 'timezone-ii'
