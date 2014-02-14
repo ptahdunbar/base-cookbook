@@ -18,6 +18,7 @@ depends "rsync"
 depends "users"
 depends "yasm"
 depends "ffmpeg"
+depends "rvm"
 
 supports "ubuntu"
 
